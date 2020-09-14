@@ -7,10 +7,13 @@ import java.util.List;
 public class MovieResponse {
 
 
-    @SerializedName("page")
-    public int page;
 
     @SerializedName("results")
     public List<Post> resultsList;
+
+    @SerializedName("results/genre_ids")
+    public List<Post> genre_ids_list;
+
+
 
 }

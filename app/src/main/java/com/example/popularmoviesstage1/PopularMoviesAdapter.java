@@ -23,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PopularMoviesAdapter extends RecyclerView.Adapter<PopularMoviesAdapter.ViewHolder> {
 
-    private List<Post> mData = new ArrayList<>();
+    public List<Post> mData = new ArrayList<>();
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
@@ -44,9 +44,9 @@ public class PopularMoviesAdapter extends RecyclerView.Adapter<PopularMoviesAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        Log.i("Pakistan", "https://image.tmdb.org/t/p/w342" + mData.get(position).getPosterPath());
-
-        Picasso.get().load("https://image.tmdb.org/t/p/w342"+ mData.get(position).getPosterPath()).into(holder.posterIv);
+//        Log.i("Pakistan", "https://image.tmdb.org/t/p/w342" + mData.get(position).getPosterPath());
+      String posterUrl = "https://image.tmdb.org/t/p/w342"+ mData.get(position).getPosterPath();
+        Picasso.get().load(posterUrl).into(holder.posterIv);
     }
 
     // total number of cells

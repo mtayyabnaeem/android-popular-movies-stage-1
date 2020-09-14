@@ -8,5 +8,8 @@ import retrofit2.http.GET;
 public interface JsonPlaceHolderApi {
 
     @GET("movie/popular?api_key=56e13caa83283369bdc35dba762d6723")
-    Call<MovieResponse> getPosts();
+    Call<MovieResponse> getPopular();
+
+    @GET("movie/top_rated?api_key=56e13caa83283369bdc35dba762d6723")
+    Call<MovieResponse> getTopRated();
 }
