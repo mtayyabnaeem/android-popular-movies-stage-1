@@ -3,27 +3,19 @@ package com.example.popularmoviesstage1;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
 public class PopularMoviesAdapter extends RecyclerView.Adapter<PopularMoviesAdapter.ViewHolder> {
 
-    public List<Post> mData = new ArrayList<>();
+    public List<Movie> mData = new ArrayList<>();
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
@@ -44,8 +36,7 @@ public class PopularMoviesAdapter extends RecyclerView.Adapter<PopularMoviesAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-//        Log.i("Pakistan", "https://image.tmdb.org/t/p/w342" + mData.get(position).getPosterPath());
-      String posterUrl = "https://image.tmdb.org/t/p/w342"+ mData.get(position).getPosterPath();
+      String posterUrl = "https://image.tmdb.org/t/p/w342" + mData.get(position).getPosterPath();
         Picasso.get().load(posterUrl).into(holder.posterIv);
     }
 
@@ -55,11 +46,14 @@ public class PopularMoviesAdapter extends RecyclerView.Adapter<PopularMoviesAdap
         return mData.size();
     }
 
-    public void setData(List<Post> resultsList) {
+    public void setData(List<Movie> resultsList) {
         mData = resultsList;
         notifyDataSetChanged();
     }
 
+    public List<Movie> getData(){
+        return mData;
+    }
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -87,5 +81,6 @@ public class PopularMoviesAdapter extends RecyclerView.Adapter<PopularMoviesAdap
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
         void onItemClick(View view, int position);
+
     }
 }
